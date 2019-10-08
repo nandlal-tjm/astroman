@@ -23,69 +23,46 @@
         </div>
         <div class="acc-content open">
             <div class="acc-content-inner">
-                <iframe src="http://astroman.fr/app-astroform/" width="320px" height="440px" frameborder="0" id="astro-form"></iframe>
+                <iframe src="http://astroman.fr/app-astroform/" frameborder="0" width="320px" height="400px" id="astro-form"></iframe>
             </div>
         </div>
-        <div class="acc-btn">
-            <h3>Demande de rendez-vous</h3>
-        </div>
-        <div class="acc-content">
-            <div class="acc-content-inner">
-                <iframe src="http://astroman.fr/app-appointment/" width="320px" height="480px" frameborder="0"></iframe>
+        <div id="footer">
+            <div class="acc-btn appointment">
+                <h3>Demande de rendez-vous</h3>
+            </div> 
+            <!-- <div class="acc-content">
+                <div class="acc-content-inner">
+                    <iframe src="http://astroman.fr/app-appointment/" frameborder="0"></iframe>
+                </div>
+            </div> -->
+            <div class="acc-btn contact">
+                <h3>Contacter Astroman.fr</h3>
             </div>
-        </div>
-        <div class="acc-btn">
-            <h3>Contacter Astroman.fr</h3>
-        </div>
-        <div class="acc-content">
-            <div class="acc-content-inner">
-                <iframe src="http://astroman.fr/app-contact/" width="320px" height="480px" frameborder="0"></iframe>
-            </div>
+            <!-- <div class="acc-content">
+                <div class="acc-content-inner">
+                    <iframe src="http://astroman.fr/app-contact/" frameborder="0"></iframe>
+                </div>
+            </div> -->
         </div>
     </div>
     
     <script>
-    $(function() {
-        $("#astro-form").bind("load", function() {
-            var iframe = $(this).contents();
-            console.log(iframe);
-            iframe.find("body").on("click", "a.download-pdf-report", function(e) {
-                console.log('clicked from app');
-            });
-            
-        });
-    });
     $(document).ready(function() {
         var animTime = 300,
             clickPolice = false;
-        $(document).on('click', '.download-pdf-report', function(e) {
-            console.log('clicker.......');
-            e.preventDefault();
-            
-        })
 
         $(document).on('touchstart click', '.acc-btn', function() {
-            if (!clickPolice) {
-                clickPolice = true;
 
-                var currIndex = $(this).index('.acc-btn'),
-                    targetHeight = $('.acc-content-inner').eq(currIndex).outerHeight();
+                iframe = $('#astro-form');
 
-                $('.acc-btn h1').removeClass('selected');
-
-                $(this).find('h1').addClass('selected');
-
-                $(this).hide();
+                // $(this).hide();
                 
-                if ( currIndex == 0 ) {
-                    $('.acc-btn').eq(1).show();
-                    $('.acc-btn').eq(2).show();
-                } else if (currIndex == 1) {
-                    $('.acc-btn').eq(0).show();
-                    $('.acc-btn').eq(2).show();
-                } else if (currIndex == 2) {
-                    $('.acc-btn').eq(0).show();
-                    $('.acc-btn').eq(1).show();
+                if ( $(this).hasClass('form') ) {
+                    iframe.attr('src', 'http://astroman.fr/app-astroform/');
+                } else if ( $(this).hasClass('appointment') ) {
+                    iframe.attr('src', 'http://astroman.fr/app-appointment/');
+                } else if ( $(this).hasClass('contact') ) {
+                    iframe.attr('src', 'http://astroman.fr/app-contact/');
                 }
 
                 if ($(this).hasClass('form')) {
@@ -94,11 +71,10 @@
                     $('.acc-btn.form').show();
                 }
 
-                $('.acc-content').stop().animate({ height: 0 }, animTime);
-                $('.acc-content').eq(currIndex).stop().animate({ height: targetHeight }, animTime);
+                // $('.acc-content').stop().animate({ height: 0 }, animTime);
+                // $('.acc-content').eq(currIndex).stop().animate({ height: targetHeight }, animTime);
 
-                setTimeout(function() { clickPolice = false; }, animTime);
-            }
+                // setTimeout(function() { clickPolice = false; }, animTime);
 
         });
 
