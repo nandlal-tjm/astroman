@@ -1,0 +1,61 @@
+ @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+    .logo {
+        width: 165px;
+        height: 96px;
+        margin: 0 auto;
+    }
+
+    .logo-img {
+        max-width: 100%;
+    }
+
+    .acc-container {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .acc-btn {
+        width: 100%;
+        margin: 0 auto;
+        padding: 5px 25px;
+        cursor: pointer;
+        background: #1bb4b9;
+        border-bottom: 1px solid #2C3E50;
+    }
+
+    h3 {
+        margin: 5px 0;
+        color: #ffffff;
+    }
+
+    .acc-content {
+        height: 0px;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .open {
+        height: auto;
+    }
+
+    .acc-btn.form {
+        display: none;
+    }
+
+    h1 {
+        font: 700 20px/26px 'Lato', sans-serif;
+        color: #ffffff;
+    }
+
+    p {
+        font: 400 16px/24px 'Lato', sans-serif;
+        color: #798795;
+    }
+
+    .selected {
+        color: #ffffff;
+    }
+    

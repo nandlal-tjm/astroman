@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" 
+             content="default-src *; 
+                      style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+                      script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+    <title>Astro.fr</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="img/logo.jpg" class="logo-img">
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <div class="acc-container">
+        <div class="acc-btn form">
+            <h3 class="selected">Réalisez votre thème astral</h3>
+        </div>
+        <div class="acc-content open">
+            <div class="acc-content-inner">
+                <iframe src="http://astroman.fr/app-astroform/" width="320px" height="440px" frameborder="0" id="astro-form"></iframe>
+            </div>
+        </div>
+        <div class="acc-btn">
+            <h3>Demande de rendez-vous</h3>
+        </div>
+        <div class="acc-content">
+            <div class="acc-content-inner">
+                <iframe src="http://astroman.fr/app-appointment/" width="320px" height="480px" frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="acc-btn">
+            <h3>Contacter Astroman.fr</h3>
+        </div>
+        <div class="acc-content">
+            <div class="acc-content-inner">
+                <iframe src="http://astroman.fr/app-contact/" width="320px" height="480px" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    $(function() {
+        $("#astro-form").bind("load", function() {
+            var iframe = $(this).contents();
+            console.log(iframe);
+            iframe.find("body").on("click", "a.download-pdf-report", function(e) {
+                console.log('clicked from app');
+            });
+            
+        });
+    });
+    $(document).ready(function() {
+        var animTime = 300,
+            clickPolice = false;
+        $(document).on('click', '.download-pdf-report', function(e) {
+            console.log('clicker.......');
+            e.preventDefault();
+            
+        })
+
+        $(document).on('touchstart click', '.acc-btn', function() {
+            if (!clickPolice) {
+                clickPolice = true;
+
+                var currIndex = $(this).index('.acc-btn'),
+                    targetHeight = $('.acc-content-inner').eq(currIndex).outerHeight();
+
+                $('.acc-btn h1').removeClass('selected');
+
+                $(this).find('h1').addClass('selected');
+
+                $(this).hide();
+                
+                if ( currIndex == 0 ) {
+                    $('.acc-btn').eq(1).show();
+                    $('.acc-btn').eq(2).show();
+                } else if (currIndex == 1) {
+                    $('.acc-btn').eq(0).show();
+                    $('.acc-btn').eq(2).show();
+                } else if (currIndex == 2) {
+                    $('.acc-btn').eq(0).show();
+                    $('.acc-btn').eq(1).show();
+                }
+
+                if ($(this).hasClass('form')) {
+                    $(this).hide();
+                } else {
+                    $('.acc-btn.form').show();
+                }
+
+                $('.acc-content').stop().animate({ height: 0 }, animTime);
+                $('.acc-content').eq(currIndex).stop().animate({ height: targetHeight }, animTime);
+
+                setTimeout(function() { clickPolice = false; }, animTime);
+            }
+
+        });
+
+    });
+    </script>
+</body>
+
+</html>

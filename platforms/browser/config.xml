@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="fr.astroman.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Astroman</name>
+    <description>
+        http://astroman.fr/
+    </description>
+    <author email="best.tjm@gmail.com" href="http://www.fiverr.com/expert2014">
+        Nand Lal
+    </author>
+    <content src="index.html" />
+    <access origin="http://astroman.fr*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://astroman.fr*" />
+    <allow-intent href="*" />
+    <access origin="*" />
+    <icon src="icon.png" />
+    <preference name="SplashScreenDelay" value="4000" />
+</widget>
